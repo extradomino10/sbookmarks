@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Super Bookmarks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/vendor/normalize.css">
+  <link rel="stylesheet" href="css/vendor/bootstrap-combined.no-icons.min.css">
+  <link rel="stylesheet" href="css/vendor/font-awesome.min.css">
+  <link rel="stylesheet" href="css/vendor/ui-transitions.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+  	
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+      	<div class="container">
+	        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="brand" href="#" title="Rankmebetter">Super Bookmarks</a>
+	        <div class="nav-collapse collapse">
+	          <ul class="nav pull-right">
+	            <li>{{#linkTo 'bookmarks'}}Bookmarks{{/linkTo}}</li>
+	          </ul>
+	        </div>
+	      </div>
+	</div>
+
+	<div id="content-wrapper" class="container">
+		<div class="row-fluid">
+			{{outlet}}
+		</div>		
+	</div>
+    
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index">
+    <h2>{{headerName}}</h2>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="bookmarks">
+  	<div class="span12">
+  		{{outlet}}
+  	</div>
+
+  	<div class="span7">
+  		<h3>You have <span class="badge badge-info">{{this.length}}</span> Bookmarks</h3>
+  	</div>
+
+  	<div class="span5 controls">
+  		{{partial '_bookmarkcontrols'}}
+  	</div>
+
+  	<div class="span12">
+
+	    <ul class="bookmarks-list">
+	    	{{#each this.favorites}}
+	    		{{view App.BookmarkElemView kind="fav"}}
+	    	{{else}}
+	    		<li class="empty">You Have no favorite bookmarks</li>
+	    	{{/each}}
+	    </ul>
+
+	    <strong>Non Favs</strong>
+  		<ul class="bookmarks-list">
+	    	{{#each this.regular}}
+	    		{{view App.BookmarkElemView}}
+	    	{{else}}
+	    		<li class="empty">You Have no bookmarks</li>
+	    	{{/each}}
+	    </ul>
+  	</div>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="bookmarks/new">
+  	<form class="form-inline new-form" {{action "save" on="submit"}}>
+  		{{#linkTo 'bookmarks' classNames="label"}} <i class="icon-remove"></i> {{/linkTo}}
+  		<h5>New Bookmark</h5>
+  		{{view Ember.TextField id="titleField" placeholder="Set a title"}}
+  		{{view Ember.TextField id="urlField" placeholder="Set a url"}}
+		<button class="btn">Create Bookmark</button>	
+  	</form>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_bookmarkcontrols">
+  	{{#linkTo 'bookmarks.new' classNames="btn btn-inverse"}} Add bookmark {{/linkTo}}
+  	<div class="btn-group">
+  	  <button class="btn" disabled>
+  	  	<i {{bindAttr class='sortAscending:icon-sort-by-attributes:icon-sort-by-attributes-alt'}}></i>
+  	  </button>
+	  <button class="btn" {{action pushSort 'title'}}>Name</button>
+	  <button class="btn">Date</button>
+	</div>
+  </script>
+
+  <!-- Vendor Libraries -->
+  <script src="js/vendor/jquery-1.9.1.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/handlebars-1.0.0.js"></script>
+  <script src="js/vendor/ember-1.0.0-rc.7.js"></script>
+  <script src="js/vendor/ember-data-latest.js"></script>
+  <script src="js/vendor/localstorage_adapter.js"></script>
+  <!-- App scripts -->
+  <script src="js/app/app.js"></script>
+  <script src="js/app/router.js"></script>
+  <script src="js/app/store.js"></script>
+  <script src="js/app/misc.js"></script>
+  <script src="js/app/models/bookmark.js"></script>
+  <script src="js/app/controllers/bookmarks.js"></script>
+  <script src="js/app/controllers/bookmarks_new.js"></script>
+  <script src="js/app/routes/bookmarks.js"></script>
+  <script src="js/app/routes/bookmarks_new.js"></script>
+  <script src="js/app/views/bookmark_elem.js"></script>
+
+</body>
+</html>

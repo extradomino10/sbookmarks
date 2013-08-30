@@ -1,0 +1,99 @@
+/* Put your CSS here */
+.row-fluid [class*="span"] {
+	margin-left: 0;
+}
+
+h3 span.badge {vertical-align: middle;}
+
+.controls {
+	text-align: right;
+	margin-top: 15px;
+}
+
+.bookmarks-list {
+	list-style: none;
+	margin: 10px 0;
+}
+
+.bookmarks-list li {
+	margin-bottom: 3px;
+	padding: 8px;
+	background-color: #0189D5;
+	color: white;
+}
+
+.bookmarks-list li.fav {
+	background-color: #d57801;
+}
+
+.bookmarks-list li.empty {
+	background-color: #611D1D;
+}
+
+.bookmarks-list li small{
+	font-style: italic;
+	color: #ccc;
+}
+
+.bookmarks-list .actions {
+	float: right;
+}
+
+.bookmarks-list .actions a {
+	color: rgba(255,255,255, 0.4);
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: none;
+	margin-right: 8px;
+}
+.bookmarks-list .actions a:hover {
+	color: rgba(255,255,255, 0.7);
+}
+
+.new-form {
+	/*background-color: #ddd;*/
+	border: solid 1px #eee;
+	margin: 10px 0;
+	padding: 8px;
+}
+.new-form h5{
+	display: inline;
+	margin-right: 20px;
+}
+.new-form .btn {
+	margin-top: 0;
+}
+.new-form a.label {
+	float: right;
+} 
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+	#content-wrapper {
+	  margin: 10px;
+	}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	#content-wrapper {
+	  margin: 10px;
+	}
+	.controls {
+		text-align: left;
+		margin-top: 8px;
+	}
+	.new-form h5{
+		display: block;
+		margin-right: 5px;
+	}
+	.new-form input {
+		margin-bottom: 8px;
+		width: 95%;
+	}
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
