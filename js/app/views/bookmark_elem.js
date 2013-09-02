@@ -5,7 +5,7 @@ App.BookmarkElemView = Ember.View.extend({
 			'<a href="javascript:void(0)" {{action favoriteItem this}}><i {{bindAttr class="favorite:icon-star-empty:icon-star"}}></i></a>',
 			'<a href="javascript:void(0)" {{action deleteItem this}}><i class="icon-trash"></i></a>',			
 		'</div>',
-		'{{title}}  <small>{{url}}</small>'
+		'{{UpprCase title}}  <small>{{url}}</small>'
 	].join('')),
 	classNameBindings: ['defaultClass', 'kind'],
 	defaultClass: 'new-item',
@@ -13,6 +13,8 @@ App.BookmarkElemView = Ember.View.extend({
 
 	didInsertElement: function(e){
 		//Insert Handler
+		// this.get('parentView') in here references `view`
+		console.log('element inserted');
 	},
 
 	willDestroyElement: function(e){

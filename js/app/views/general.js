@@ -1,19 +1,3 @@
-var App = Ember.Application.create();
-
-App.Router.map(function() {
-  // put your routes here
-});
-
-App.IndexRoute = Ember.Route.extend({
-
-});
-
-App.IndexController = Ember.ObjectController.extend({
-  headerName: 'Super Bookmarks App',
-  appVersion:  2.1
-});
-
-
 var templates = [
 	'bookmarks',
 	'bookmarks_new'
@@ -32,11 +16,10 @@ LoadTemplate = function(viewfile){
 
 	req.done(function(response){
 		responses.push({name: viewfile, tpl: response})
-		deferred.resolve(); //On Done resolve the promise
+		deferred.resolve();
 	});
 
 	req.fail(function(error){
-		console.log('xhr error');
 		deferred.reject('error');
 	});
 
@@ -57,5 +40,3 @@ $.when.apply($, promises)
 		}
 	}
 );
-
-

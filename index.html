@@ -44,48 +44,15 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="bookmarks">
-  	<div class="span12">
-  		{{outlet}}
-  	</div>
-
-  	<div class="span7">
-  		<h3>You have <span class="badge badge-info">{{this.length}}</span> Bookmarks</h3>
-  	</div>
-
-  	<div class="span5 controls">
-  		{{partial '_bookmarkcontrols'}}
-  	</div>
-
-  	<div class="span12">
-
-	    <ul class="bookmarks-list">
-	    	{{#each this.favorites}}
-	    		{{view App.BookmarkElemView kind="fav"}}
-	    	{{else}}
-	    		<li class="empty">You Have no favorite bookmarks</li>
-	    	{{/each}}
-	    </ul>
-
-	    <strong>Non Favs</strong>
-  		<ul class="bookmarks-list">
-	    	{{#each this.regular}}
-	    		{{view App.BookmarkElemView}}
-	    	{{else}}
-	    		<li class="empty">You Have no bookmarks</li>
-	    	{{/each}}
-	    </ul>
-  	</div>
-
+    <div class="span12">
+      {{outlet}}
+    </div>
+    
+  	{{view App.BookmarksView}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="bookmarks/new">
-  	<form class="form-inline new-form" {{action "save" on="submit"}}>
-  		{{#linkTo 'bookmarks' classNames="label"}} <i class="icon-remove"></i> {{/linkTo}}
-  		<h5>New Bookmark</h5>
-  		{{view Ember.TextField id="titleField" placeholder="Set a title"}}
-  		{{view Ember.TextField id="urlField" placeholder="Set a url"}}
-		<button class="btn">Create Bookmark</button>	
-  	</form>
+  	{{view App.BookmarksNewView}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="_bookmarkcontrols">
@@ -111,11 +78,13 @@
   <script src="js/app/router.js"></script>
   <script src="js/app/store.js"></script>
   <script src="js/app/misc.js"></script>
+  <script src="js/app/helpers.js"></script>
   <script src="js/app/models/bookmark.js"></script>
   <script src="js/app/controllers/bookmarks.js"></script>
   <script src="js/app/controllers/bookmarks_new.js"></script>
   <script src="js/app/routes/bookmarks.js"></script>
   <script src="js/app/routes/bookmarks_new.js"></script>
+  <!--<script src="js/app/views/general.js"></script>-->
   <script src="js/app/views/bookmark_elem.js"></script>
 
 </body>

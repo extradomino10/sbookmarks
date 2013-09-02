@@ -1,0 +1,7 @@
+<form class="form-inline new-form" {{action "save" on="submit"}}>
+	{{#linkTo 'bookmarks' classNames="label"}} <i class="icon-remove"></i> {{/linkTo}}
+	<h5>New Bookmark</h5>
+	{{view Ember.TextField id="titleField" placeholder="Set a title"}}
+	{{view Ember.TextField id="urlField" placeholder="Set a url"}}
+	<button class="btn">Create Bookmark</button>	
+</form>
