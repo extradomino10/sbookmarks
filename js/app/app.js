@@ -10,7 +10,9 @@ App.IndexRoute = Ember.Route.extend({
 
 App.IndexController = Ember.ObjectController.extend({
   headerName: 'Super Bookmarks App',
-  appVersion:  2.1
+  appVersion:  2.1,
+  vpWidth: document.documentElement.clientWidth,
+  vpHeight: document.documentElement.clientHeight
 });
 
 
